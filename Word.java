@@ -1,5 +1,5 @@
 /**
- * Created by duane on 8/8/2016.
+ * The concept of a word
  */
 public class Word {
   private final PARTOFSPEECH tag;
@@ -10,10 +10,16 @@ public class Word {
     this.wordstring = wordstring;
   }
 
+  /**
+   * Returns the POS of a word
+   */
   public PARTOFSPEECH getTag() {
     return tag;
   }
 
+  /**
+   * Gets the word string
+   */
   public String getWordstring() {
     return wordstring;
   }

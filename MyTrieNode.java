@@ -1,7 +1,7 @@
 import java.util.HashMap;
 
 /**
- * Created by duane on 8/8/2016.
+ * Trie implementation
  */
 public class MyTrieNode {
   private char root;

@@ -1,7 +1,7 @@
 import java.util.HashMap;
 
 /**
- * Created by duane on 8/8/2016.
+ * Implements the dictionary interface, holding the attributes of a trie
  */
 public class LocalDictionary extends MyTrie implements Dictionary {
 
@@ -71,6 +71,12 @@ public class LocalDictionary extends MyTrie implements Dictionary {
     return null;
   }
 
+  /**
+   * Determines if a word is tagged yet or not
+   * @param word word to be inquired about
+   * @return tagged status
+   * @throws BadWordException if word isn't in dictionary
+   */
   private boolean isTagged(String word) throws BadWordException {
     HashMap<Character, MyTrieNode> children = dictionary.root.children;
 

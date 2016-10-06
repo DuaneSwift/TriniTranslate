@@ -1,5 +1,5 @@
 /**
- * Created by duane on 8/9/2016.
+ * The concept of a rule as an object
  */
 public class Rule {
   PARTOFSPEECH preceedingCategory;

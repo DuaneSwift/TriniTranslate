@@ -1,7 +1,7 @@
 import static org.junit.Assert.*;
 
 /**
- * Created by duane on 8/8/2016.
+ * Trie Tests
  */
 public class MyTrieTest {
 

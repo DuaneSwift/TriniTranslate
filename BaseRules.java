@@ -1,22 +1,24 @@
-import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
-
 import java.util.LinkedList;
-import java.util.TreeMap;
 
 /**
- * Created by duane on 8/8/2016.
+ * The base rules of the program to be expanded on as it grows
  */
 public class BaseRules {
-  private static LinkedList<LinkedList<LinkedList<PARTOFSPEECH>>> treeruletree = new LinkedList<>();
+  private static MyTrie trieofrules = new MyTrie();
 
+  /**
+   * Instantiation
+   */
   BaseRules() {
-    this.treeruletree = BaseRuleReader.populateRules();
+    this.trieofrules = BaseRuleReader.populateRules();
   }
 
   // To fix, currently just polls first
   public static PARTOFSPEECH getRule(PARTOFSPEECH prev, PARTOFSPEECH post) {
-    treeruletree = BaseRuleReader.populateRules();
-    return treeruletree.get(treeruletree.indexOf(prev)).get(treeruletree.indexOf(post)).poll();
+    trieofrules = BaseRuleReader.populateRules();
+    RuleDictionary d = new RuleDictionary(trieofrules);
+    d.trieoftree.root
+    return
   }
 /**
  * Rules As I Go to remember to code

@@ -2,7 +2,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Created by duane on 8/8/2016.
+ * Implementation of a trie
  */
 public class MyTrie {
   MyTrieNode root;

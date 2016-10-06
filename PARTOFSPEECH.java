@@ -1,5 +1,5 @@
 /**
- * Created by duane on 8/8/2016.
+ * Various parts of speech
  */
 public enum PARTOFSPEECH {
   N, N_PRO,

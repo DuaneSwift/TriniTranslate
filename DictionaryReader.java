@@ -3,15 +3,19 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 /**
- * Created by duane on 8/8/2016.
+ * Reads words into the dictionary, from the given list of words,
+ * usually from ASE as of now
  */
 public class DictionaryReader {
 
+  //Trie of words
   private static MyTrie trie = new MyTrie();
+  //Instantiation
   private static LocalDictionary temporarylocaldictionary = new LocalDictionary(trie);
 
   DictionaryReader(){}
 
+  // Populates the trie with words
   static LocalDictionary populateDictionary() {
     Scanner scanner = null;
     try {
@@ -28,5 +32,4 @@ public class DictionaryReader {
     }
     return temporarylocaldictionary;
   }
-
 }

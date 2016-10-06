@@ -1,9 +1,7 @@
 import org.junit.Test;
 
-import static org.junit.Assert.*;
-
 /**
- * Created by duane on 8/9/2016.
+ * Tests for tagging
  */
 public class RegularTaggingTest {
   @Test
