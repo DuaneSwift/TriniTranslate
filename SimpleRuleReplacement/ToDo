@@ -1,0 +1,3 @@
+1. Create Global Dictionary
+    -   Each Node would hold whether or not current path up until this node is a word (Done)
+    -   It will also hold a Hashmap of POS to Number of Occurences that will be updated at run time. (Done)

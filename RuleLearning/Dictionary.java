@@ -1,3 +1,8 @@
+package RuleLearning;
+
+import java.util.ArrayList;
+import java.util.Set;
+
 /**
  * Interface for the Dictonary of ASE Words,
  * and all relevant accessors/modifiers
@@ -17,7 +22,7 @@ public interface Dictionary {
    * @param pos part of speech to be tagged as
    * @return {@code this}
    */
-  Dictionary insertNewWord(String word, PARTOFSPEECH pos);
+  Dictionary insertNewWord(String word, String pos);
 
   /**
    * What is the part of speech of this word?
@@ -25,7 +30,7 @@ public interface Dictionary {
    * @return the part of speech of the word
    * @throws BadWordException if the word isn't in the dictionary, this will be thrown
    */
-  PARTOFSPEECH getPartOfSpeech(String word) throws BadWordException;
+  ArrayList<String> getPartOfSpeech(String word) throws BadWordException;
 
   /**
    * Used to tag the part of speech of a word that is already in the dictionary
@@ -34,7 +39,7 @@ public interface Dictionary {
    * @return {@code this}
    * @throws BadWordException if the word to be tagged isn't in the dictionary
    */
-  Dictionary tagPartOfSpeech(String word, PARTOFSPEECH partofspeech) throws BadWordException;
+  Dictionary tagPartOfSpeech(String word, String partofspeech) throws BadWordException;
 
   /**
    * Returns a more superfluous version of isInDictionary, indicating POS as well

@@ -1,6 +1,9 @@
+package RuleLearning;
+
+import MyDataStructures.MyTrie;
+
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.LinkedList;
 import java.util.Scanner;
 
 /**
@@ -20,16 +23,17 @@ public class BaseRuleReader {
   static MyTrie populateRules() {
     Scanner scanner = null;
     try {
-      scanner = new Scanner(new File("BaseRules.txt"));
+      scanner = new Scanner(new File("RuleLearning.BaseRules.txt"));
     } catch (FileNotFoundException e) {
       e.printStackTrace();
     }
     while (scanner.hasNextLine()) {
       Scanner scanner1 = new Scanner(scanner.nextLine());
       while (scanner1.hasNext()) {
-        PARTOFSPEECH prev = PARTOFSPEECH.reversePOS(scanner1.next());
-        PARTOFSPEECH post = PARTOFSPEECH.reversePOS(scanner1.next());
-        PARTOFSPEECH result = PARTOFSPEECH.reversePOS(scanner1.next());
+        String prev = scanner1.next();
+        String post = scanner1.next();
+        String result = scanner1.next();
+        treeruletree.insert(prev+post+result);
       }
     }
     return treeruletree;

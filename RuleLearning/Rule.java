@@ -1,13 +1,15 @@
+package RuleLearning;
+
 /**
  * The concept of a rule as an object
  */
 public class Rule {
-  PARTOFSPEECH preceedingCategory;
-  PARTOFSPEECH currentCategory;
-  PARTOFSPEECH postCategory;
+  String preceedingCategory;
+  String currentCategory;
+  String postCategory;
   double probability;
 
-  Rule(PARTOFSPEECH prev, PARTOFSPEECH partofspeech, PARTOFSPEECH post) {
+  Rule(String prev, String partofspeech, String post) {
     this.preceedingCategory = prev;
     this.currentCategory = partofspeech;
     this.postCategory = post;

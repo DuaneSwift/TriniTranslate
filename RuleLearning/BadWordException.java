@@ -1,3 +1,5 @@
+package RuleLearning;
+
 /**
  * Throws an exception if a word is given that isn't
   */

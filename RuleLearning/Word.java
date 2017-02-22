@@ -1,11 +1,13 @@
+package RuleLearning;
+
 /**
  * The concept of a word
  */
 public class Word {
-  private final PARTOFSPEECH tag;
+  private final String tag;
   private final String wordstring;
 
-  private Word(String wordstring, PARTOFSPEECH tag) {
+  private Word(String wordstring, String tag) {
     this.tag = tag;
     this.wordstring = wordstring;
   }
@@ -13,7 +15,7 @@ public class Word {
   /**
    * Returns the POS of a word
    */
-  public PARTOFSPEECH getTag() {
+  public String getTag() {
     return tag;
   }
 

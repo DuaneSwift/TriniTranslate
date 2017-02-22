@@ -1,3 +1,7 @@
+package RuleLearning;
+
+import MyDataStructures.MyTrie;
+
 /**
  * Created by duane on 10/1/2016.
  */

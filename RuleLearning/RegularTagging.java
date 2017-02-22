@@ -1,6 +1,8 @@
-/**
- * Created by duane on 8/9/2016.
- */
+package RuleLearning;
+
+import MyDataStructures.MyTrie;
+
+
 public class RegularTagging {
 
   private final String sentence;
@@ -31,13 +33,13 @@ public class RegularTagging {
     String[] arr = sentence.split(" ");
     sentencetagged = new String[arr.length][2];
     int i = 0;
-      PARTOFSPEECH pos = null;
+      String pos = null;
       for (String s : arr) {
         sentencetagged[i][0] = s;
         sb.append(s);
         sb.append("\n");
         if (rulesDictionary.isInDictionary(s)) {
-          pos = rulesDictionary.getPartOfSpeech(s);
+          pos = rulesDictionary.getPartOfSpeech(s).get(0);
           sb.append(pos);
           sentencetagged[i][1] = pos.toString();
         } else {
@@ -56,14 +58,7 @@ public class RegularTagging {
       if (sentencetagged[i][1].equals("untagged")) {
         if (i == 0) {
           sentencetagged[i][1] = "N";
-          localDictionary.insertNewWord(sentencetagged[i][0], PARTOFSPEECH.N);
-        } else {
-          //To FIX, will fail if last word wasn't pretagged
-          PARTOFSPEECH recommendedpos = BaseRules.getRule(
-                  PARTOFSPEECH.reversePOS(sentencetagged[i - 1][1]),
-                  PARTOFSPEECH.reversePOS(sentencetagged[i + 1][1]));
-          localDictionary.insertNewWord(sentencetagged[i][0], recommendedpos);
-          sentencetagged[i][1] = recommendedpos.toString();
+          localDictionary.insertNewWord(sentencetagged[i][0], "N");
         }
       }
     }

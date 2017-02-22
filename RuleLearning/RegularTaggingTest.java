@@ -1,3 +1,5 @@
+package RuleLearning;
+
 import org.junit.Test;
 
 /**

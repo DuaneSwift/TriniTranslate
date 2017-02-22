@@ -1,35 +1,40 @@
+package RuleLearning;
+
+import MyDataStructures.MyTrie;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 /**
- * Reads words into the dictionary, from the given list of words,
- * usually from ASE as of now
+ * Created by duane on 8/9/2016.
  */
-public class DictionaryReader {
+public class RuleReader {
 
-  //Trie of words
   private static MyTrie trie = new MyTrie();
-  //Instantiation
   private static LocalDictionary temporarylocaldictionary = new LocalDictionary(trie);
 
-  DictionaryReader(){}
 
-  // Populates the trie with words
+  RuleReader(){}
+
   static LocalDictionary populateDictionary() {
     Scanner scanner = null;
     try {
-      scanner = new Scanner(new File("dictionary.txt"));
+      scanner = new Scanner(new File("BaseMorphemes.txt"));
     } catch (FileNotFoundException e) {
       e.printStackTrace();
     }
     while (scanner.hasNextLine()) {
       Scanner scanner1 = new Scanner(scanner.nextLine());
       while (scanner1.hasNext()) {
-        String s = scanner1.next();
-        temporarylocaldictionary.insertSetup(s);
+        String word = scanner1.next();
+        String temppos = scanner1.next();
+        String pos = null;
+        pos = temppos;
+        temporarylocaldictionary.insertNewWord(word, pos);
       }
     }
     return temporarylocaldictionary;
   }
+
 }

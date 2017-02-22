@@ -1,4 +1,11 @@
+package RuleLearning;
+
+import MyDataStructures.MyTrie;
+import MyDataStructures.MyTrieNode;
+
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Set;
 
 /**
  * Implements the dictionary interface, holding the attributes of a trie
@@ -17,16 +24,16 @@ public class LocalDictionary extends MyTrie implements Dictionary {
 
   @Override
   public boolean isInDictionary(String word) {
-    MyTrieNode t = dictionary.searchNode(word);
-    if(t != null && t.isLeaf)
+    MyTrieNode t = dictionary.search(word);
+    if(t != null && t.isLeaf())
       return true;
     else
       return false;
   }
 
   @Override
-  public Dictionary insertNewWord(String word, PARTOFSPEECH pos) {
-    HashMap<Character, MyTrieNode> children = dictionary.root.children;
+  public Dictionary insertNewWord(String word, String pos) {
+    HashMap<Character, MyTrieNode> children = dictionary.getRoot().getChildren();
 
     for (int i = 0; i < word.length(); i++) {
       char c = word.charAt(i);
@@ -39,19 +46,18 @@ public class LocalDictionary extends MyTrie implements Dictionary {
         children.put(c, t);
       }
 
-      children = t.children;
+      children = t.getChildren();
 
       if (i == word.length() - 1) {
-        t.isLeaf = true;
-        t.partofspeech = pos;
+        t.setLeaf(true);
       }
     }
     return this;
   }
 
   @Override
-  public PARTOFSPEECH getPartOfSpeech(String word) throws BadWordException {
-    HashMap<Character, MyTrieNode> children = dictionary.root.children;
+  public ArrayList<String> getPartOfSpeech(String word) throws BadWordException {
+    HashMap<Character, MyTrieNode> children = dictionary.getRoot().getChildren();
 
     for (int i = 0; i < word.length(); i++) {
       char c = word.charAt(i);
@@ -62,10 +68,10 @@ public class LocalDictionary extends MyTrie implements Dictionary {
       } else {
         throw new BadWordException("This word doesn't exist in the dictionary");
       }
-      children = t.children;
+      children = t.getChildren();
 
       if (i == word.length() - 1) {
-        return t.partofspeech;
+        return t.getPos();
       }
     }
     return null;
@@ -78,7 +84,7 @@ public class LocalDictionary extends MyTrie implements Dictionary {
    * @throws BadWordException if word isn't in dictionary
    */
   private boolean isTagged(String word) throws BadWordException {
-    HashMap<Character, MyTrieNode> children = dictionary.root.children;
+    HashMap<Character, MyTrieNode> children = dictionary.getRoot().getChildren();
 
     for (int i = 0; i < word.length(); i++) {
       char c = word.charAt(i);
@@ -89,18 +95,18 @@ public class LocalDictionary extends MyTrie implements Dictionary {
       } else {
         throw new BadWordException("This word doesn't exist in the dictionary");
       }
-      children = t.children;
+      children = t.getChildren();
 
-      if (i == word.length() - 1) {
-        return !(t.partofspeech == null);
-      }
+//      if (i == word.length() - 1) {
+//        return !(t.partofspeech == null);
+//      }
     }
-    throw new IllegalStateException("Your Dictionary populater or Trie is Faulty, Duane");
+    throw new IllegalStateException("Your RuleLearning.Dictionary populater or Trie is Faulty, Duane");
   }
 
   @Override
-  public Dictionary tagPartOfSpeech(String word, PARTOFSPEECH partofspeech) throws BadWordException {
-    HashMap<Character, MyTrieNode> children = dictionary.root.children;
+  public Dictionary tagPartOfSpeech(String word, String partofspeech) throws BadWordException {
+    HashMap<Character, MyTrieNode> children = dictionary.getRoot().getChildren();
 
     for (int i = 0; i < word.length(); i++) {
       char c = word.charAt(i);
@@ -111,10 +117,10 @@ public class LocalDictionary extends MyTrie implements Dictionary {
       } else {
         throw new BadWordException("This word doesn't exist to be tagged");
       }
-      children = t.children;
+      children = t.getChildren();
 
       if (i == word.length() - 1) {
-        t.partofspeech = partofspeech;
+        t.setPos(partofspeech);
       }
     }
     return this;
